@@ -33,3 +33,13 @@ SELECT e.ssn, COUNT(*) AS qtd_proj FROM employee e FULL OUTER JOIN works_on w ON
 
 --Q12
 SELECT w.pno, COUNT(*) AS qtd_func FROM employee e FULL OUTER JOIN works_on w ON e.ssn = w.essn GROUP BY w.pno ORDER BY qtd_func;
+
+--Q13
+SELECT e.fname FROM employee AS e , project AS p, works_on AS w WHERE (e.ssn = w.essn) AND (p.pnumber = w.pno) AND p.plocation = 'Sugarland' AND EXISTS(SELECT pname FROM dependent AS d WHERE (E.SSN = D.ESSN));  
+
+--Q14
+SELECT d.dname FROM department AS d WHERE NOT EXISTS(SELECT * FROM project AS p WHERE p.dnum = dnumber);
+
+--Q15 
+
+
